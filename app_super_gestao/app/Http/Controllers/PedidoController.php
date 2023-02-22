@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Unidade;
-use App\Models\ProdutoDetalhe;
+use App\Models\Pedido;
 
-class ProdutoDetalheController extends Controller
+class PedidoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $pedidos = Pedido::paginate(10);
+        return view('app.pedido.index',['pedidos' => $pedidos ,'request'=>$request->all()]);
     }
 
     /**
@@ -25,8 +25,7 @@ class ProdutoDetalheController extends Controller
      */
     public function create()
     {
-        $unidades=Unidade::all();
-        return view('app.produto_detalhe.create',['unidades'=>$unidades]);
+        //
     }
 
     /**
@@ -37,8 +36,7 @@ class ProdutoDetalheController extends Controller
      */
     public function store(Request $request)
     {
-        ProdutoDetalhe::create($request->all());
-        echo'Cadastro realizado com sucesso';
+        //
     }
 
     /**
@@ -55,26 +53,24 @@ class ProdutoDetalheController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  App\Models\ProdutoDetalhe $produtoDetalhe
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit( ProdutoDetalhe $produtoDetalhe)
+    public function edit($id)
     {
-        $unidades=Unidade::all();
-        return view('app.produto_detalhe.edit',['produto_detalhe'=>$produtoDetalhe, 'unidades'=> $unidades]);
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Models\ProdutoDetalhe $produtoDetalhe
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProdutoDetalhe $produtoDetalhe)
+    public function update(Request $request, $id)
     {
-        $produtoDetalhe->update($request->all());
-        echo 'Atualização realizada com sucesso';
+        //
     }
 
     /**
