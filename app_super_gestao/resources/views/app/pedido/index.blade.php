@@ -11,18 +11,20 @@
 
         <div class="menu">
             <ul>
-                <li><a href="{{route('pedido.create')}}">Voltar</a></li>
+                <li><a href="{{route('pedido.create')}}">Novo</a></li>
                 <li><a href="">Consulta</a></li>
             </ul>
         </div>
 
         <div class="informacao-pagina">
-            <div style="width:40%; margin-left:auto; margin-right: auto;">
+            <div style="width:20%; margin-left:auto; margin-right: auto;">
                 <table border="1" widht="100%">
                     <thead>
                         <tr>
                             <th>ID do Pedido</th>
                             <th>Cliente</th>
+                            <th></th>
+                            <th></th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -33,6 +35,7 @@
                             <tr>
                                 <td>{{$pedido->id}}</td>
                                 <td>{{$pedido->cliente_id}}</td>
+                                <td><a href="{{route('pedido-produto.create', ['pedido' => $pedido->id])}}">Adicionar Produtos</a></td>
                                 <td><a href="{{route('pedido.show', ['pedido'=> $pedido->id])}}">Visualizar</a></td>
                                 <td>
                                    <form id="form_{{$pedido->id}}" method="post"  action="{{ route('pedido.destroy',['pedido'=>$pedido->id]) }}"> 

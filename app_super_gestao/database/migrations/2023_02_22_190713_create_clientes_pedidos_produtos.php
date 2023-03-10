@@ -48,7 +48,7 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('clientes');
         Schema::dropIfExists('pedidos');
-        Schema::dropIfExists('produtos');
+        Schema::dropIfExists('pedidos_produtos');
         Schema::enableForeignKeyConstraints();
     }
 };

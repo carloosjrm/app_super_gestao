@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     use HasFactory;
-    protected $fillable = ['pedidos'];
+    protected $table = 'pedidos';
+    protected $fillable = ['cliente_id'];
+
+    public function produtos() {
+        return $this->belongsToMany('App\Models\Produto', 'pedidos_produtos')->withPivot('created_at');
+    }
 }
